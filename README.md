@@ -1,0 +1,4 @@
+- Se faz necessario o uso da biblioteca Connector/ODBC
+- COnfigurar IIS e dar permission 
+- Configurar odbc para o mariadb
+- 

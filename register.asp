@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <h1>Formulário de Registro</h1>
-        <form>
+        <form action="insertData.asp" method="get">
             <div class="container mt-5">
                 <h2>Dados do CNPJ</h2>
                 <div class="form-group">
