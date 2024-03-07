@@ -35,7 +35,6 @@ Else
     Response.Write("<div class='alert alert-danger' role='alert'>Erro ao cadastrar os dados: " & Err.Description & "</div>")
 End If
 
-' Feche a conexão com o banco de dados
 conn.Close
 Set conn = Nothing
 
