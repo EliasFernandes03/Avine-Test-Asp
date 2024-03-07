@@ -13,37 +13,31 @@ connectionString = "DRIVER={MySQL ODBC 8.3 ANSI Driver}; SERVER=localhost; PORT=
 ' Tente estabelecer a conexão com o banco de dados
 Dim conn
 Set conn = Server.CreateObject("ADODB.Connection")
-On Error Resume Next
 conn.Open connectionString
 
-' Verifique se houve erro na conexão
+' Receber os valores dos campos do formulário
+Dim razaoSocial, cnpj, logradouro, numero, complemento, municipio, uf
+razaoSocial = Request.Form("razaoSocialInput")
+cnpj = Request.Form("cnpjInput")
+logradouro = Request.Form("logradouroInput")
+numero = Request.Form("numeroInput")
+complemento = Request.Form("complementoInput")
+municipio = Request.Form("municipioInput")
+uf = Request.Form("ufInput")
+
+' Montar a instrução SQL de inserção
+Dim sql
+sql = "INSERT INTO tb_companies (razao_social, cnpj, logradouro, numero, complemento, municipio, uf) " & _
+      "VALUES ('" & razaoSocial & "', '" & cnpj & "', '" & logradouro & "', '" & numero & "', '" & complemento & "', '" & municipio & "', '" & uf & "')"
+
+' Executar a consulta SQL de inserção
+conn.Execute sql
+
+' Verificar se houve erro na execução da consulta
 If Err.Number = 0 Then
-    ' Receber os valores dos campos do formulário
-    Dim razaoSocial, cnpj, logradouro, numero, complemento, municipio, uf
-    razaoSocial = Request.Form("razaoSocialInput")
-    cnpj = Request.Form("cnpjInput")
-    logradouro = Request.Form("logradouroInput")
-    numero = Request.Form("numeroInput")
-    complemento = Request.Form("complementoInput")
-    municipio = Request.Form("municipioInput")
-    uf = Request.Form("ufInput")
-
-    ' Montar a instrução SQL de inserção
-    Dim sql
-    sql = "INSERT INTO tb_companies (razao_social, cnpj, logradouro, numero, complemento, municipio, uf) " & _
-          "VALUES ('" & razaoSocial & "', '" & cnpj & "', '" & logradouro & "', '" & numero & "', '" & complemento & "', '" & municipio & "', '" & uf & "')"
-
-    ' Executar a consulta SQL de inserção
-    conn.Execute sql
-
-    ' Verificar se houve erro na execução da consulta
-    If Err.Number = 0 Then
-        Response.Write("Dados cadastrados com sucesso.")
-    Else
-        Response.Write("Erro ao cadastrar os dados: " & Err.Description)
-    End If
+    Response.Write("Dados cadastrados com sucesso.")
 Else
-    Response.Write("Erro ao conectar-se ao banco de dados: " & Err.Description)
+    Response.Write("Erro ao cadastrar os dados: " & Err.Description)
 End If
 
 ' Feche a conexão com o banco de dados
