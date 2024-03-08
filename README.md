@@ -3,6 +3,7 @@
 
 
 ## Como usar
+- Clone o projeto para a sua maquina `git clone https://github.com/EliasFernandes03/Avine-Test-Asp.git`
 - Se faz necessário alguns passos para a utilização desse projeto, o primeiro passo é que o formulário do react esteja rodando, portanto vá até a rota `https://github.com/EliasFernandes03/Avine-test` e siga os passos para subir a aplicação.
 
  - Depois se faz necessário dos seguintes passos :
